@@ -90,33 +90,39 @@ const Home = () => {
                 in mind. We believe in complete transparency—you always know what your child is 
                 learning and how their data is protected.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-                <a 
-                  href="/privacy" 
-                  className="text-primary hover:text-primary/80 font-semibold underline"
-                >
-                  Privacy Policy
-                </a>
-                <span className="hidden sm:inline text-muted-foreground">•</span>
-                <a 
-                  href="/safety" 
-                  className="text-primary hover:text-primary/80 font-semibold underline"
-                >
-                  Safety & Compliance
-                </a>
-                <span className="hidden sm:inline text-muted-foreground">•</span>
-                <a 
-                  href="/faq" 
-                  className="text-primary hover:text-primary/80 font-semibold underline"
-                >
-                  Parent FAQ
-                </a>
-              </div>
             </div>
           </div>
         </section>
         
         <TrustBadges />
+        
+        {/* Legal Links Section */}
+        <section className="py-12">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a 
+                href="/privacy" 
+                className="text-primary hover:text-primary/80 font-semibold underline"
+              >
+                Privacy Policy
+              </a>
+              <span className="hidden sm:inline text-muted-foreground">•</span>
+              <a 
+                href="/safety" 
+                className="text-primary hover:text-primary/80 font-semibold underline"
+              >
+                Safety & Compliance
+              </a>
+              <span className="hidden sm:inline text-muted-foreground">•</span>
+              <a 
+                href="/faq" 
+                className="text-primary hover:text-primary/80 font-semibold underline"
+              >
+                Parent FAQ
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
