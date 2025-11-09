@@ -36,7 +36,6 @@ const Home = () => {
       <Navigation />
       <main className="pt-16">
         <Hero />
-        <TrustBadges />
 
         {/* Apps Section */}
         <section id="apps" className="py-20">
@@ -116,6 +115,8 @@ const Home = () => {
             </div>
           </div>
         </section>
+        
+        <TrustBadges />
       </main>
       <Footer />
     </div>

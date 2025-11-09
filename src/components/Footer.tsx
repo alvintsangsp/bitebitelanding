@@ -55,10 +55,10 @@ const Footer = () => {
             <div className="flex items-center gap-2 text-muted-foreground">
               <Mail className="w-5 h-5" />
               <a 
-                href="mailto:hello@bitebite.app" 
+                href="mailto:cs@bitebite.app" 
                 className="hover:text-primary transition-colors"
               >
-                hello@bitebite.app
+                cs@bitebite.app
               </a>
             </div>
           </div>
