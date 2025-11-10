@@ -4,6 +4,9 @@ import readingIcon from "@/assets/app-reading.png";
 import codingIcon from "@/assets/app-coding.png";
 import geographyIcon from "@/assets/app-geography.png";
 import artIcon from "@/assets/app-art.png";
+import xiangqiIcon from "@/assets/app-xiangqi.png";
+import chesskingIcon from "@/assets/app-chessking.png";
+import pingyiIcon from "@/assets/app-pingyi.png";
 
 export interface App {
   id: string;
@@ -171,5 +174,80 @@ export const apps: App[] = [
     ageAppropriate: "Great for all creative kids ages 6-14",
     contentDescription: "Creative art activities. No ads, no sharing required.",
     timeRecommendation: "20-45 minutes for creative sessions"
+  },
+  {
+    id: "xiangqi",
+    name: "Xiangqi",
+    description: "Master Chinese chess strategy and tactics in this engaging board game experience",
+    age: "Ages 8-16",
+    category: "Strategy",
+    icon: xiangqiIcon,
+    color: "hsl(0 84% 60%)",
+    fullDescription: "Learn the ancient game of Chinese chess! Xiangqi teaches strategic thinking, pattern recognition, and tactical planning through interactive gameplay.",
+    features: [
+      "Interactive game board",
+      "Tutorial for beginners",
+      "Strategy hints and tips",
+      "Multiple difficulty levels"
+    ],
+    learningObjectives: [
+      "Develop strategic thinking skills",
+      "Learn pattern recognition",
+      "Improve concentration and focus",
+      "Understand Chinese chess rules and tactics"
+    ],
+    ageAppropriate: "Perfect for kids and teens ages 8-16",
+    contentDescription: "Educational strategy game with no ads or in-app purchases.",
+    timeRecommendation: "15-30 minutes per game session"
+  },
+  {
+    id: "chessking",
+    name: "Chessking",
+    description: "Learn chess fundamentals and become a skilled player through interactive lessons",
+    age: "Ages 6-14",
+    category: "Chess",
+    icon: chesskingIcon,
+    color: "hsl(195 100% 50%)",
+    fullDescription: "Become a chess master! Chessking teaches chess basics, tactics, and strategies through fun, interactive lessons and practice games.",
+    features: [
+      "Step-by-step chess tutorials",
+      "Interactive practice games",
+      "Puzzle challenges",
+      "Progress tracking"
+    ],
+    learningObjectives: [
+      "Master chess rules and moves",
+      "Develop critical thinking",
+      "Improve problem-solving skills",
+      "Learn strategic planning"
+    ],
+    ageAppropriate: "Great for young learners ages 6-14",
+    contentDescription: "Educational chess training with child-safe environment.",
+    timeRecommendation: "20-30 minutes per practice session"
+  },
+  {
+    id: "pingyi",
+    name: "PingYi",
+    description: "Build vocabulary and language skills through fun word games and spelling challenges",
+    age: "Ages 5-12",
+    category: "Language",
+    icon: pingyiIcon,
+    color: "hsl(45 100% 51%)",
+    fullDescription: "Make learning words fun! PingYi helps kids expand vocabulary, practice spelling, and develop language skills through colorful, engaging activities.",
+    features: [
+      "Interactive word games",
+      "Spelling challenges",
+      "Vocabulary building",
+      "Pronunciation practice"
+    ],
+    learningObjectives: [
+      "Expand vocabulary",
+      "Improve spelling skills",
+      "Develop language comprehension",
+      "Build reading confidence"
+    ],
+    ageAppropriate: "Perfect for young learners ages 5-12",
+    contentDescription: "Educational language learning content. Safe and ad-free.",
+    timeRecommendation: "15-25 minutes daily practice"
   }
 ];

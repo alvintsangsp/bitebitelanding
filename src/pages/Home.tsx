@@ -1,13 +1,23 @@
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import TrustBadges from "@/components/TrustBadges";
 import AppCard from "@/components/AppCard";
+import AppDetailDrawer from "@/components/AppDetailDrawer";
 import FeatureCard from "@/components/FeatureCard";
 import Footer from "@/components/Footer";
 import { GraduationCap, Shield, Users, Gift } from "lucide-react";
 import { apps } from "@/data/apps";
+import type { App } from "@/data/apps";
 
 const Home = () => {
+  const [selectedApp, setSelectedApp] = useState<App | null>(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const handleLearnMore = (app: App) => {
+    setSelectedApp(app);
+    setDrawerOpen(true);
+  };
   const features = [
     {
       icon: GraduationCap,
@@ -49,9 +59,13 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {apps.map((app) => (
-                <AppCard key={app.id} {...app} />
+                <AppCard 
+                  key={app.id} 
+                  {...app} 
+                  onLearnMore={() => handleLearnMore(app)}
+                />
               ))}
             </div>
           </div>
@@ -125,6 +139,11 @@ const Home = () => {
         </section>
       </main>
       <Footer />
+      <AppDetailDrawer 
+        app={selectedApp}
+        open={drawerOpen}
+        onOpenChange={setDrawerOpen}
+      />
     </div>
   );
 };
