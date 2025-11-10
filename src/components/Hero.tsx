@@ -2,57 +2,71 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-learning.jpg";
 
 const Hero = () => {
+  const scrollToApps = () => {
+    const appsSection = document.getElementById("explore-apps");
+    if (appsSection) {
+      appsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden pt-8 pb-12 px-4">
       <div 
         className="absolute inset-0 z-0"
         style={{
           background: 'linear-gradient(135deg, hsl(211 100% 50%), hsl(28 100% 50%))',
           opacity: 0.1
         }}
+        aria-hidden="true"
       />
       
-      <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 text-center lg:text-left">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+      <div className="container mx-auto max-w-7xl relative z-10">
+        {/* Mobile-first: Stack vertically, center-aligned */}
+        <div className="flex flex-col items-center justify-center text-center space-y-8 md:space-y-12">
+          {/* Headline - Stacked vertically on mobile */}
+          <div className="space-y-4 w-full max-w-2xl">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Play for Good!
               <span className="block mt-2 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
                 Learn While Having Fun
               </span>
             </h1>
             
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4">
               Educational apps designed by educators, trusted by parents, loved by kids
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
-              >
-                Explore Our Apps
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6 rounded-full transition-all"
-              >
-                Learn More
-              </Button>
-            </div>
           </div>
 
-          <div className="relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+          {/* CTA Buttons - Stacked vertically on mobile, full width */}
+          <div className="flex flex-col w-full max-w-md gap-4 px-4 md:flex-row md:justify-center md:max-w-2xl">
+            <Button 
+              onClick={scrollToApps}
+              size="lg" 
+              className="w-full min-h-[44px] bg-primary hover:bg-primary/90 text-primary-foreground text-base md:text-lg px-8 py-6 rounded-full transition-all"
+              aria-label="Explore our educational apps"
+            >
+              Explore Our Apps
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="w-full min-h-[44px] border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground text-base md:text-lg px-8 py-6 rounded-full transition-all"
+              aria-label="Learn more about BiteBite"
+            >
+              Learn More
+            </Button>
+          </div>
+
+          {/* Hero Image - Hidden on very small screens, shown on larger mobile */}
+          <div className="relative w-full max-w-lg mt-4 hidden sm:block">
+            <div className="relative rounded-2xl md:rounded-3xl overflow-hidden">
               <img 
                 src={heroImage} 
                 alt="Children learning through educational apps"
                 className="w-full h-auto object-cover"
+                loading="eager"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/20 rounded-full blur-3xl" />
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl" />
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ export interface App {
   age: string;
   category: string;
   icon: string;
+  screenshot?: string; // In-app screenshot URL
   color: string;
   fullDescription: string;
   features: string[];
@@ -22,6 +23,7 @@ export interface App {
   ageAppropriate: string;
   contentDescription: string;
   timeRecommendation: string;
+  appUrl?: string; // Direct URL to the live app
 }
 
 export const apps: App[] = [
@@ -180,8 +182,10 @@ export const apps: App[] = [
     name: "Xiangqi",
     description: "Master Chinese chess strategy and tactics in this engaging board game experience",
     age: "Ages 8-16",
-    category: "Strategy",
+    category: "Board Game",
     icon: xiangqiIcon,
+    screenshot: "https://xianqi.bitebite.app/screenshot.png", // Replace with actual screenshot
+    appUrl: "https://xianqi.bitebite.app",
     color: "hsl(0 84% 60%)",
     fullDescription: "Learn the ancient game of Chinese chess! Xiangqi teaches strategic thinking, pattern recognition, and tactical planning through interactive gameplay.",
     features: [
@@ -205,8 +209,10 @@ export const apps: App[] = [
     name: "Chessking",
     description: "Learn chess fundamentals and become a skilled player through interactive lessons",
     age: "Ages 6-14",
-    category: "Chess",
+    category: "Board Game",
     icon: chesskingIcon,
+    screenshot: "https://chessking.bitebite.app/screenshot.png", // Replace with actual screenshot
+    appUrl: "https://chessking.bitebite.app",
     color: "hsl(195 100% 50%)",
     fullDescription: "Become a chess master! Chessking teaches chess basics, tactics, and strategies through fun, interactive lessons and practice games.",
     features: [
@@ -232,6 +238,8 @@ export const apps: App[] = [
     age: "Ages 5-12",
     category: "Language",
     icon: pingyiIcon,
+    screenshot: "https://pingyiaf.bitebite.app/screenshot.png", // Replace with actual screenshot
+    appUrl: "https://pingyiaf.bitebite.app",
     color: "hsl(45 100% 51%)",
     fullDescription: "Make learning words fun! PingYi helps kids expand vocabulary, practice spelling, and develop language skills through colorful, engaging activities.",
     features: [

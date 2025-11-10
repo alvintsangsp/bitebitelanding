@@ -6,82 +6,129 @@ import { Button } from "@/components/ui/button";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const scrollToApps = () => {
+    setIsOpen(false);
+    const appsSection = document.getElementById("explore-apps");
+    if (appsSection) {
+      appsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <nav 
+      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border"
+      role="navigation"
+      aria-label="Main navigation"
+    >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <div className="flex items-center justify-between h-16 min-h-[44px]">
+          {/* Logo - Left side */}
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 min-h-[44px] min-w-[44px]"
+            aria-label="BiteBite Home"
+          >
+            <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               BiteBite
             </span>
-            <span className="text-sm font-medium text-muted-foreground hidden sm:inline">
+            <span className="text-xs sm:text-sm font-medium text-muted-foreground hidden sm:inline">
               Play for Good!
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            <Link to="/" className="text-foreground hover:text-primary transition-colors">
+          {/* Desktop Navigation - Hidden on mobile */}
+          <div className="hidden md:flex items-center gap-4 lg:gap-6">
+            <Link 
+              to="/" 
+              className="text-base text-foreground hover:text-primary transition-colors min-h-[44px] flex items-center"
+            >
               Home
             </Link>
-            <Link to="/about" className="text-foreground hover:text-primary transition-colors">
+            <Link 
+              to="/about" 
+              className="text-base text-foreground hover:text-primary transition-colors min-h-[44px] flex items-center"
+            >
               About
             </Link>
-            <a href="#apps" className="text-foreground hover:text-primary transition-colors">
+            <a 
+              href="#explore-apps" 
+              className="text-base text-foreground hover:text-primary transition-colors min-h-[44px] flex items-center"
+            >
               Apps
             </a>
-            <a href="#parent-hub" className="text-foreground hover:text-primary transition-colors">
+            <a 
+              href="#parent-hub" 
+              className="text-base text-foreground hover:text-primary transition-colors min-h-[44px] flex items-center"
+            >
               Parent Hub
             </a>
-            <Button size="sm" className="bg-primary hover:bg-primary/90">
+            <Button 
+              size="sm" 
+              className="bg-primary hover:bg-primary/90 min-h-[44px]"
+              onClick={scrollToApps}
+            >
               Explore Apps
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Top right, hamburger icon */}
           <button
-            className="md:hidden p-2"
+            className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-lg hover:bg-muted transition-colors"
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? (
+              <X className="w-6 h-6" aria-hidden="true" />
+            ) : (
+              <Menu className="w-6 h-6" aria-hidden="true" />
+            )}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - Full width dropdown */}
         {isOpen && (
-          <div className="md:hidden py-4 space-y-4">
+          <div 
+            id="mobile-menu"
+            className="md:hidden py-4 space-y-2 border-t border-border"
+          >
             <Link
               to="/"
-              className="block py-2 text-foreground hover:text-primary transition-colors"
+              className="block py-3 px-4 text-base text-foreground hover:text-primary hover:bg-muted/50 transition-colors rounded-lg min-h-[44px] flex items-center"
               onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
             <Link
               to="/about"
-              className="block py-2 text-foreground hover:text-primary transition-colors"
+              className="block py-3 px-4 text-base text-foreground hover:text-primary hover:bg-muted/50 transition-colors rounded-lg min-h-[44px] flex items-center"
               onClick={() => setIsOpen(false)}
             >
               About
             </Link>
             <a
-              href="#apps"
-              className="block py-2 text-foreground hover:text-primary transition-colors"
-              onClick={() => setIsOpen(false)}
+              href="#explore-apps"
+              className="block py-3 px-4 text-base text-foreground hover:text-primary hover:bg-muted/50 transition-colors rounded-lg min-h-[44px] flex items-center"
+              onClick={scrollToApps}
             >
               Apps
             </a>
             <a
               href="#parent-hub"
-              className="block py-2 text-foreground hover:text-primary transition-colors"
+              className="block py-3 px-4 text-base text-foreground hover:text-primary hover:bg-muted/50 transition-colors rounded-lg min-h-[44px] flex items-center"
               onClick={() => setIsOpen(false)}
             >
               Parent Hub
             </a>
-            <Button className="w-full bg-primary hover:bg-primary/90">
-              Explore Apps
-            </Button>
+            <div className="pt-2 px-4">
+              <Button 
+                className="w-full bg-primary hover:bg-primary/90 min-h-[44px] text-base"
+                onClick={scrollToApps}
+              >
+                Explore Apps
+              </Button>
+            </div>
           </div>
         )}
       </div>
