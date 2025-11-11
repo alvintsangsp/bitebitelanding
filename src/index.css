@@ -188,4 +188,16 @@ All colors MUST be HSL.
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  /* Ensure images scale properly on all devices */
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Prevent layout shift from images */
+  img[loading="lazy"] {
+    min-height: 1px;
+  }
 }

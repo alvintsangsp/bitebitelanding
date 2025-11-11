@@ -6,14 +6,6 @@ import { Button } from "@/components/ui/button";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const scrollToApps = () => {
-    setIsOpen(false);
-    const appsSection = document.getElementById("explore-apps");
-    if (appsSection) {
-      appsSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <nav 
       className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border"
@@ -50,25 +42,26 @@ const Navigation = () => {
             >
               About
             </Link>
-            <a 
-              href="#explore-apps" 
+            <Link 
+              to="/apps" 
               className="text-base text-foreground hover:text-primary transition-colors min-h-[44px] flex items-center"
             >
               Apps
-            </a>
+            </Link>
             <a 
               href="#parent-hub" 
               className="text-base text-foreground hover:text-primary transition-colors min-h-[44px] flex items-center"
             >
               Parent Hub
             </a>
-            <Button 
-              size="sm" 
-              className="bg-primary hover:bg-primary/90 min-h-[44px]"
-              onClick={scrollToApps}
-            >
-              Explore Apps
-            </Button>
+            <Link to="/apps">
+              <Button 
+                size="sm" 
+                className="bg-primary hover:bg-primary/90 min-h-[44px]"
+              >
+                Explore Apps
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button - Top right, hamburger icon */}
@@ -107,13 +100,13 @@ const Navigation = () => {
             >
               About
             </Link>
-            <a
-              href="#explore-apps"
+            <Link
+              to="/apps"
               className="block py-3 px-4 text-base text-foreground hover:text-primary hover:bg-muted/50 transition-colors rounded-lg min-h-[44px] flex items-center"
-              onClick={scrollToApps}
+              onClick={() => setIsOpen(false)}
             >
               Apps
-            </a>
+            </Link>
             <a
               href="#parent-hub"
               className="block py-3 px-4 text-base text-foreground hover:text-primary hover:bg-muted/50 transition-colors rounded-lg min-h-[44px] flex items-center"
@@ -122,12 +115,14 @@ const Navigation = () => {
               Parent Hub
             </a>
             <div className="pt-2 px-4">
-              <Button 
-                className="w-full bg-primary hover:bg-primary/90 min-h-[44px] text-base"
-                onClick={scrollToApps}
-              >
-                Explore Apps
-              </Button>
+              <Link to="/apps" className="block">
+                <Button 
+                  className="w-full bg-primary hover:bg-primary/90 min-h-[44px] text-base"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Explore Apps
+                </Button>
+              </Link>
             </div>
           </div>
         )}

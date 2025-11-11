@@ -1,13 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-learning.jpg";
 
 const Hero = () => {
-  const scrollToApps = () => {
-    const appsSection = document.getElementById("explore-apps");
-    if (appsSection) {
-      appsSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <section className="relative w-full min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden pt-8 pb-12 px-4">
@@ -39,22 +34,25 @@ const Hero = () => {
 
           {/* CTA Buttons - Stacked vertically on mobile, full width */}
           <div className="flex flex-col w-full max-w-md gap-4 px-4 md:flex-row md:justify-center md:max-w-2xl">
-            <Button 
-              onClick={scrollToApps}
-              size="lg" 
-              className="w-full min-h-[44px] bg-primary hover:bg-primary/90 text-primary-foreground text-base md:text-lg px-8 py-6 rounded-full transition-all"
-              aria-label="Explore our educational apps"
-            >
-              Explore Our Apps
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="w-full min-h-[44px] border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground text-base md:text-lg px-8 py-6 rounded-full transition-all"
-              aria-label="Learn more about BiteBite"
-            >
-              Learn More
-            </Button>
+            <Link to="/apps" className="w-full">
+              <Button 
+                size="lg" 
+                className="w-full min-h-[44px] bg-primary hover:bg-primary/90 text-primary-foreground text-base md:text-lg px-8 py-6 rounded-full transition-all"
+                aria-label="Explore our educational apps"
+              >
+                Explore Our Apps
+              </Button>
+            </Link>
+            <Link to="/about" className="w-full">
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="w-full min-h-[44px] border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground text-base md:text-lg px-8 py-6 rounded-full transition-all"
+                aria-label="Learn more about BiteBite"
+              >
+                Learn More
+              </Button>
+            </Link>
           </div>
 
           {/* Hero Image - Hidden on very small screens, shown on larger mobile */}

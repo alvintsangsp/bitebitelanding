@@ -19,9 +19,8 @@ const Home = () => {
     setDrawerOpen(true);
   };
 
-  // Featured apps: Xiangqi, Chessking, PingYi
-  const featuredAppIds = ["xiangqi", "chessking", "pingyi"];
-  const featuredApps = apps.filter(app => featuredAppIds.includes(app.id));
+  // Latest 3 apps (most recent)
+  const latestApps = apps.slice(-3).reverse();
 
   const features = [
     {
@@ -56,27 +55,38 @@ const Home = () => {
         {/* Trust Badges Section */}
         <TrustBadges />
 
-        {/* Explore Our Apps Section - Mobile-first, stacked vertically */}
+        {/* Latest Fun Apps Section - Mobile-first, stacked vertically */}
         <section id="explore-apps" className="py-12 md:py-20 px-4">
           <div className="container mx-auto max-w-4xl">
             <div className="text-center mb-8 md:mb-12">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-                Explore Our Apps
+                Latest Fun Apps
               </h2>
               <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-                Discover engaging, curriculum-aligned apps that make learning fun
+                Check out our newest educational apps that make learning exciting
               </p>
             </div>
 
             {/* App Cards - Stacked vertically on mobile, full width with 16px padding */}
             <div className="flex flex-col gap-6 md:gap-8">
-              {featuredApps.map((app) => (
+              {latestApps.map((app) => (
                 <AppCard 
                   key={app.id} 
                   {...app} 
                   onLearnMore={() => handleLearnMore(app)}
                 />
               ))}
+            </div>
+
+            {/* View All Apps Button */}
+            <div className="text-center mt-8 md:mt-12">
+              <a 
+                href="/apps"
+                className="inline-flex items-center justify-center w-full max-w-md min-h-[44px] bg-secondary hover:bg-secondary/90 text-secondary-foreground text-base md:text-lg font-semibold px-8 py-6 rounded-full transition-all"
+                aria-label="View all apps"
+              >
+                View All Apps
+              </a>
             </div>
           </div>
         </section>
