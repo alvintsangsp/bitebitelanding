@@ -8,26 +8,33 @@ import About from "./pages/About";
 import Apps from "./pages/Apps";
 import AppDetail from "./pages/AppDetail";
 import NotFound from "./pages/NotFound";
+import Showcase from "./pages/Showcase";
+import { TranslationProvider } from "@/i18n/TranslationProvider";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/apps" element={<Apps />} />
-          <Route path="/app/:id" element={<AppDetail />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <TranslationProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/apps" element={<Apps />} />
+            <Route path="/app/:id" element={<AppDetail />} />
+          <Route path="/showcase" element={<Showcase />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </TranslationProvider>
 );
 
 export default App;
